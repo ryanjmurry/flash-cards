@@ -2,31 +2,35 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
+import { Game } from './game.js';
+import { Question } from './question.js';
 
 $(document).ready(function() {
-  const newGame = new Game();
+  var newGame = new Game();
+
+  function nextQuestion() {
+    $("#card").text(newGame.showDefinition());
+    setTimeout(function() {
+      $("#card").text(newGame.showTerm());
+    }, newGame.findSetTimeOut());
+    console.log(newGame.questionList.questions);
+  }
 
   $("#start-button").click(function() {
     $("#start-screen").hide();
-    nextQuestion(newGame.index);
+    $("#card-area").show();
+    nextQuestion();
   });
 
   $("#flag-button").click(function() {
     newGame.index = newGame.randomNumber();
-    newGame.nextQuestion(newGame.index);
+    nextQuestion();
   });
 
   $("#remove-button").click(function() {
-    newGame.removeQuestion(newGame.index);
+    debugger;
+    newGame.removeQuestion();
     newGame.index = newGame.randomNumber();
-    newGame.nextQuestion(newGame.index);
+    nextQuestion();
   });
-
-function nextQuestion(index) {
-  setTimeout(function() {
-    $("#card").text(showTerm(index));
-  }, findSetTimeOut(index));
-  $("#card").text(newGame.showDefinition(index));
-}
-
 });

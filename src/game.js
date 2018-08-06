@@ -7,22 +7,24 @@ export class Game {
   }
 
   randomNumber() {
-    return Math.floor((Math.random() * this.questionList.length) + 1);
+    let num = Object.keys(this.questionList.questions).length;
+    return Math.floor((Math.random() * num) + 1);
   }
 
-  showTerm(index) {
-    return Object.values(this.questionList)[index];
+  showTerm() {
+    return Object.values(this.questionList.questions)[this.index];
   }
 
-  showDefinition(index) {
-    return Object.keys(this.questionList)[index];
+  showDefinition() {
+    return Object.keys(this.questionList.questions)[this.index];
   }
 
-  findSetTimeOut(index) {
-    return ((Object.keys(this.questionList)[key].split(" ").length/2)*1000) +7000;
+  findSetTimeOut() {
+    return ((Object.keys(this.questionList.questions)[this.index].split(" ").length/3)*1000) +5000;
   }
 
-  removeQuestion(index) {
-    this.questionList.splice(index, 1);
+  removeQuestion() {
+    let booted = Object.keys(this.questionList.questions)[this.index];
+    delete this.questionList.questions[booted];
   }
 }
