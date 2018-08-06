@@ -6,14 +6,25 @@ import { Game } from './game.js';
 import { Question } from './question.js';
 
 $(document).ready(function() {
+  function hideButtons() {
+    $("#flag-button").hide();
+    $("#remove-button").hide();
+  }
+
   var newGame = new Game();
 
   function nextQuestion() {
     $("#card").text(newGame.showDefinition());
     setTimeout(function() {
       $("#card").text(newGame.showTerm());
+      showButtons();
     }, newGame.findSetTimeOut());
     console.log(newGame.questionList.questions);
+  }
+  
+  function showButtons() {
+    $("#flag-button").show();
+    $("#remove-button").show();
   }
 
   $("#start-button").click(function() {
@@ -23,12 +34,13 @@ $(document).ready(function() {
   });
 
   $("#flag-button").click(function() {
+    hideButtons();
     newGame.index = newGame.randomNumber();
     nextQuestion();
   });
 
   $("#remove-button").click(function() {
-    debugger;
+    hideButtons();
     newGame.removeQuestion();
     newGame.index = newGame.randomNumber();
     nextQuestion();

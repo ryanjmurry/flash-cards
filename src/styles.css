@@ -1,8 +1,34 @@
 body {
-  background-color: #013220;
+  background-color: #282B2B;
   color: #ffffff;
 }
 
 #card-area {
   display: none;
+  color: purple;
+  text-align: center;
+}
+
+#flag-button {
+  display: none;
+}
+
+#remove-button {
+  display: none;
+}
+
+#start-button {
+  font-size: 200px;
+  width:100%;
+}
+
+.btn {
+  margin-top: 50px;
+}
+
+.jumbotron {
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
