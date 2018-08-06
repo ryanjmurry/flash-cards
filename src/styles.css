@@ -2,3 +2,7 @@ body {
   background-color: #013220;
   color: #ffffff;
 }
+
+#card {
+  display: none;
+}
